@@ -111,8 +111,6 @@ def chart_rise_set(start, end, lat, lon, tzstr, cityname):
     endYear = int(end[:4])
     extremes, data = risesetextremes(lat, lon, tzstr, startYear=startYear,
                                      years=endYear - startYear + 1, verbose=False)
-    # pprint(extremes['2024'])
-    # return
     print(f"{cityname} {extremes['2024']['rise_latest'].strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"{extremes['2024']['Winter Solstice'].strftime('%Y-%m-%d %H:%M:%S %Z')}")
 
@@ -155,6 +153,7 @@ def chart_rise_set(start, end, lat, lon, tzstr, cityname):
 
     # Create a sample DataFrame
     df = pd.DataFrame(result)
+    print('rise and set extremes with and without permanent daylight saving time')
     for dstperm in ['', '_perm_dst']:
         print(dstperm)
         for riseset in ['rise', 'set']:
